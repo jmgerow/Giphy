@@ -6,7 +6,7 @@ var search = "";
 $(document).ready(function() {
 
 // generates gif buttons
-    var searchButtons = ["husky","westworld","monkey","the office"];
+    var searchButtons = ["husky","westworld","monkey","the office","dogs","subaru","bird","GOT","movies"];
         for (var i = 0; i < searchButtons.length; i++){
         var searchBtn = $("<button>");
         searchBtn.addClass("gif-button");
@@ -17,7 +17,7 @@ $(document).ready(function() {
         buttonListener();
         };
 
-//TO DO: enter submit field here to push to searchButtons array
+//search field here to push to searchButtons array
     $("#addSearch").on("click", function() {
         var userInput = $("#search-input").val().trim();
        
@@ -42,6 +42,8 @@ $(document).ready(function() {
     function buttonListener() {    
     $(".gif-button").on("click", function() {
         search = $(this).attr("data-search");
+
+        $("#displayGiphy").empty();
         
    
     
@@ -56,49 +58,135 @@ $(document).ready(function() {
     
     
         var results = response.data;
-    
+        
+        //loads static images
+        //some buttons are adding multiple sets of images, from 1-4 times the amount
+
         for (var i = 0; i < results.length; i++) {
-    
+            // animatedGif = false;
              
             var searchDiv = $("<div>");
     
             var p = $("<p>").text("Rating: " + results[i].rating);
     
-            var searchImage = $("<img>");
-            searchImage.addClass("gif-button");
-            searchImage.attr("src", results[i].images.fixed_height_still.url);
+            var stillImage = $("<img>");
+            var animateImage = $("<img>");
+            // searchImage.addClass("gif-button");
+            stillImage.attr("src", results[i].images.fixed_height_still.url);
+            animateImage.attr("src", results[i].images.fixed_height.url);
+           
+            
             searchDiv.addClass("gif");
             searchDiv.append(p);
-            searchDiv.append(searchImage);
-    
+            searchDiv.append(stillImage);
+            
             $("#displayGiphy").prepend(searchDiv);
-
-                
-
+ 
           }
-          
-          //animates when clicked
+          // all images are animating when clicked, versus only the image clicked
+          var isAnimated = false;
+
           $(".gif").on("click", function() {
-            for (var i = 0; i < results.length; i++) {
-    
+          if (isAnimated === false) {
+            $("#displayGiphy").empty();
+          for (var i = 0; i < results.length; i++) {
+            // animatedGif = false;
              
-                var searchDiv = $("<div>");
-        
-                var p = $("<p>").text("Rating: " + results[i].rating);
-        
-                var searchImage = $("<img>");
-                
-                searchImage.attr("src", results[i].images.fixed_height.url);
-        
-                searchDiv.append(p);
-                searchDiv.append(searchImage);
-        
-                $("#displayGiphy").html(searchDiv);
+            var searchDiv = $("<div>");
     
+            var p = $("<p>").text("Rating: " + results[i].rating);
+    
+            var stillImage = $("<img>");
+            var animateImage = $("<img>");
+            // searchImage.addClass("gif-button");
+            stillImage.attr("src", results[i].images.fixed_height_still.url);
+            animateImage.attr("src", results[i].images.fixed_height.url);
+           
+            
+            searchDiv.addClass("gif");
+            searchDiv.append(p);
+            searchDiv.append(animateImage);
+            
+            $("#displayGiphy").prepend(searchDiv);
+ 
+          }
+        
+            } else {
+
+                $("#displayGiphy").empty();
+                for (var i = 0; i < results.length; i++) {
+                    // animatedGif = false;
                     
+                    var searchDiv = $("<div>");
+            
+                    var p = $("<p>").text("Rating: " + results[i].rating);
+            
+                    var stillImage = $("<img>");
+                    var animateImage = $("<img>");
+                    // searchImage.addClass("gif-button");
+                    stillImage.attr("src", results[i].images.fixed_height_still.url);
+                    animateImage.attr("src", results[i].images.fixed_height.url);
+                   
+                    
+                    searchDiv.addClass("gif");
+                    searchDiv.append(p);
+                    searchDiv.append(stillImage);
+                    
+                    $("#displayGiphy").prepend(searchDiv);
+         
+                  }
+
+            }
+        });
+
+
+
+        //   $(".gif").on("click", function() {
+        //     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        //     var state = $(this).attr("data-state");
+        //         console.log(this);
+        //     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        //     // Then, set the image's data-state to animate
+        //     // Else set src to the data-still value
+        //     if (state === "still") {
+        //       $(this).attr("src", $(this).attr("data-animate"));
+        //       $(this).attr("data-state", "animate");
+        //       console.log(this);
+        //     } else {
+        //       $(this).attr("src", $(this).attr("data-still"));
+        //       $(this).attr("data-state", "still");
+        //       console.log(this);
+        //     }
+        //   });
+
+
+
+
+
+
+
+
+        //   $(".gif").on("click", function() {
+        //     for (var j = 0; j < results.length; j++) {
+
+        //     var stillImage = results[j].images.fixed_height_still.url;
+        //     var animateImage = results[j].images.fixed_height.url;
+        //     searchImage.attr("src", animateImage);
+
+        //     searchDiv.append(searchImage)
+        //     console.log(stillImage);
+        //     console.log(animateImage); 
+            
+        //     // searchDiv.append(animateImage);
+        //     // console.log(searchDiv);
+        //     $("#displayGiphy").append(animateImage);      
     
-              }
-            });
+        //     }    
+        // }); 
+
+
+        
+
 
     });
     
