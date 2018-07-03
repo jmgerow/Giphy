@@ -71,27 +71,33 @@ $(document).ready(function() {
     
             var stillImage = $("<img>");
             var animateImage = $("<img>");
+            // var imagePosition = [];
+            
             // searchImage.addClass("gif-button");
             stillImage.attr("src", results[i].images.fixed_height_still.url);
             animateImage.attr("src", results[i].images.fixed_height.url);
-           
+            
             
             searchDiv.addClass("gif");
             searchDiv.append(p);
             searchDiv.append(stillImage);
-            
+            // imagePosition.push(stillImage);
+            // console.log(imagePosition[2]);
             $("#displayGiphy").prepend(searchDiv);
  
           }
           // all images are animating when clicked, versus only the image clicked
-          var isAnimated = false;
-
+        
+  
           $(".gif").on("click", function() {
-          if (isAnimated === false) {
+       
             $("#displayGiphy").empty();
+             
+
+        
           for (var i = 0; i < results.length; i++) {
             // animatedGif = false;
-             
+            
             var searchDiv = $("<div>");
     
             var p = $("<p>").text("Rating: " + results[i].rating);
@@ -109,83 +115,12 @@ $(document).ready(function() {
             
             $("#displayGiphy").prepend(searchDiv);
  
-          }
+          
         
-            } else {
-
-                $("#displayGiphy").empty();
-                for (var i = 0; i < results.length; i++) {
-                    // animatedGif = false;
-                    
-                    var searchDiv = $("<div>");
             
-                    var p = $("<p>").text("Rating: " + results[i].rating);
-            
-                    var stillImage = $("<img>");
-                    var animateImage = $("<img>");
-                    // searchImage.addClass("gif-button");
-                    stillImage.attr("src", results[i].images.fixed_height_still.url);
-                    animateImage.attr("src", results[i].images.fixed_height.url);
-                   
-                    
-                    searchDiv.addClass("gif");
-                    searchDiv.append(p);
-                    searchDiv.append(stillImage);
-                    
-                    $("#displayGiphy").prepend(searchDiv);
-         
-                  }
 
             }
         });
-
-
-
-        //   $(".gif").on("click", function() {
-        //     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-        //     var state = $(this).attr("data-state");
-        //         console.log(this);
-        //     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        //     // Then, set the image's data-state to animate
-        //     // Else set src to the data-still value
-        //     if (state === "still") {
-        //       $(this).attr("src", $(this).attr("data-animate"));
-        //       $(this).attr("data-state", "animate");
-        //       console.log(this);
-        //     } else {
-        //       $(this).attr("src", $(this).attr("data-still"));
-        //       $(this).attr("data-state", "still");
-        //       console.log(this);
-        //     }
-        //   });
-
-
-
-
-
-
-
-
-        //   $(".gif").on("click", function() {
-        //     for (var j = 0; j < results.length; j++) {
-
-        //     var stillImage = results[j].images.fixed_height_still.url;
-        //     var animateImage = results[j].images.fixed_height.url;
-        //     searchImage.attr("src", animateImage);
-
-        //     searchDiv.append(searchImage)
-        //     console.log(stillImage);
-        //     console.log(animateImage); 
-            
-        //     // searchDiv.append(animateImage);
-        //     // console.log(searchDiv);
-        //     $("#displayGiphy").append(animateImage);      
-    
-        //     }    
-        // }); 
-
-
-        
 
 
     });
