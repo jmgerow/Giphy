@@ -50,7 +50,7 @@ function display() {
             var searchDiv = $("<div>");
             searchDiv.addClass("searchDiv");
             var p = $("<p>").text("Rating: " + results[i].rating);
-            searchDiv.append(p);
+            
 
 
             var gifImage = $("<img>");
@@ -65,6 +65,7 @@ function display() {
             searchDiv.addClass("gif");
             
             searchDiv.append(gifImage);
+            searchDiv.append(p);
             
             $("#displayGiphy").prepend(searchDiv);
  
@@ -76,12 +77,10 @@ function display() {
     });    
 }
 
-
-
-
 gifButtons();
 addGifButton();
 
+// click event for searchButtons
 $(document).on("click", ".gif-button", display);
 
 // toggle to switch between still and animate
