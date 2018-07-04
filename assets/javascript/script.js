@@ -7,7 +7,7 @@ function gifButtons() {
 
     $("#gifSelector").empty();
 
-    for (var i = 0; i <searchButtons.length; i++) {
+    for (var i = 0; i < searchButtons.length; i++) {
         var searchBtn = $("<button>");
         searchBtn.attr("data-search", searchButtons[i]);
         searchBtn.addClass("gif-button");
@@ -53,18 +53,18 @@ function display() {
             
 
 
-            var gifImage = $("<img>");
+            var image = $("<img>");
             
-            gifImage.attr("src", results[i].images.fixed_height_still.url);
-            gifImage.attr("data-still", results[i].images.fixed_height_still.url);
-            gifImage.attr("data-animate", results[i].images.fixed_height.url);
-            gifImage.attr("data-state", "still");
-            gifImage.addClass("gif");
+            image.attr("src", results[i].images.fixed_height_still.url);
+            image.attr("data-still", results[i].images.fixed_height_still.url);
+            image.attr("data-animate", results[i].images.fixed_height.url);
+            image.attr("data-state", "still");
+            image.addClass("gif");
             
             
             searchDiv.addClass("gif");
             
-            searchDiv.append(gifImage);
+            searchDiv.append(image);
             searchDiv.append(p);
             
             $("#displayGiphy").prepend(searchDiv);
@@ -78,6 +78,7 @@ function display() {
 }
 
 gifButtons();
+
 addGifButton();
 
 // click event for searchButtons
