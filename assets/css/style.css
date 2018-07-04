@@ -9,6 +9,10 @@ body {
     
   }
 
+
+  
+  
+  
   #gifSelector {
     float: left;
     padding: 10px;
@@ -35,11 +39,11 @@ body {
       clear: both;
       /* position: relative; */
       float: left;
-      margin-top: 0px;
+      margin-top: 30px;
       /* margin-right: 300px; */
       width: 1200px;
-      max-height: 600px;
-      margin-bottom: 100px;
+      min-height: calc(100vh - 70px);
+      /* margin-bottom: 300px; */
       /* overflow: auto; */
       text-align: center;
   }
@@ -70,9 +74,40 @@ body {
     float: left; 
     padding: 10px; 
   }
+
+  #giphy {
+    clear: both;
+    float: right;
+    padding: 10px;
+    margin-top: 200px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    clear: both;
+  }
+
+  footer {
+    /* margin-top: -300px; */
+    padding: 30px 0;
+    clear: both;
+    font-size: 12px;
+    color: #fff;
+    color: #ccc;
+    text-align: center;
+    background: #666;
+    border-top: 8px solid #4aaaa5;
+    height: 30px;
+  }
   
-
-
+  h3, h2 {
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    line-height: 22px;
+    border-bottom: 2px solid #eee;
+  }
  
-
+  
 
